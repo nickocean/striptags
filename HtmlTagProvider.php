@@ -43,7 +43,7 @@ class HtmlTagProvider
      */
     public function getAllowedTags()
     {
-        $allowedTags = '<audio>';
+        $allowedTags = '<audio></audio>';
 
         foreach ($this->elements as $name => $data) {
             $allowedTag = '<' . $name . '>';
