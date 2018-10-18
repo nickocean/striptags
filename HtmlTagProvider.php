@@ -45,14 +45,14 @@ class HtmlTagProvider
     {
         $allowedTags = '<audio></audio>';
 
-        foreach ($this->elements as $name => $data) {
+        /*foreach ($this->elements as $name => $data) {
             $allowedTag = '<' . $name . '>';
             if (!array_key_exists('hasClosingTag', $data) || $data['hasClosingTag']) {
                 $allowedTag .= '</' . $name . '>';
             }
 
             $allowedTags .= $allowedTag;
-        }
+        }*/
 
         return $allowedTags;
     }
