@@ -80,9 +80,9 @@ class HtmlTagHelper
             return strip_tags($string, $this->htmlTagProvider->getAllowedTags());
         }
 
-        $result = trim(strip_tags($string));
+       /* $result = trim(strip_tags($string));
 
-        return preg_replace('/\s+/u', ' ', $result);
+        return preg_replace('/\s+/u', ' ', $result);*/
     }
 
     /**
