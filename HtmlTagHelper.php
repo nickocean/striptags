@@ -77,7 +77,7 @@ class HtmlTagHelper
         $string = str_replace('>', '> ', $string);
 
         if ($uiAllowedTags) {
-            return strip_tags($string, $this->htmlTagProvider->getAllowedTags());
+            return stripslashes(strip_tags($string, $this->htmlTagProvider->getAllowedTags()));
         }
 
        /* $result = trim(strip_tags($string));
