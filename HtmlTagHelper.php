@@ -40,15 +40,17 @@ class HtmlTagHelper
      *
      * @return string
      */
-    /*public function sanitize($string)
+    public function sanitize($string)
     {
-        $transformer = new SanitizeHTMLTransformer(
+        /*$transformer = new SanitizeHTMLTransformer(
             implode(',', $this->htmlTagProvider->getAllowedElements()),
             $this->cacheDir
         );
 
-        return $transformer->transform($string);
-    }*/
+        return $transformer->transform($string);*/
+
+        return $string;
+    }
 
     /**
      * Remove all html elements but leave new lines
@@ -58,11 +60,13 @@ class HtmlTagHelper
      */
     public function purify($string)
     {
-        if (!$this->purifyTransformer) {
+        /*if (!$this->purifyTransformer) {
             $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
         }
 
-        return trim($this->purifyTransformer->transform($string));
+        return trim($this->purifyTransformer->transform($string));*/
+
+        return $string;
     }
 
     /**
@@ -94,7 +98,7 @@ class HtmlTagHelper
      */
     public function shorten($string, $maxLength = self::MAX_STRING_LENGTH)
     {
-        $encoding = mb_detect_encoding($string);
+       /* $encoding = mb_detect_encoding($string);
         if (mb_strlen($string, $encoding) > $maxLength) {
             $string = mb_substr($string, 0, $maxLength, $encoding);
             $lastOccurrencePos = mb_strrpos($string, ' ', null, $encoding);
@@ -103,7 +107,9 @@ class HtmlTagHelper
             }
         }
 
-        return trim($string);
+        return trim($string);*/
+
+       return $string;
     }
 
     /**
@@ -114,7 +120,7 @@ class HtmlTagHelper
      */
     public function escape($string)
     {
-        $config = \HTMLPurifier_Config::createDefault();
+        /*$config = \HTMLPurifier_Config::createDefault();
         $config->set('Cache.SerializerPath', $this->cacheDir);
         $config->set('Cache.SerializerPermissions', 0775);
         $config->set('Attr.EnableID', true);
@@ -122,7 +128,9 @@ class HtmlTagHelper
 
         $purifier = new \HTMLPurifier($config);
 
-        return $purifier->purify($string);
+        return $purifier->purify($string);*/
+
+        return $string;
     }
 
     /**
@@ -132,7 +140,7 @@ class HtmlTagHelper
      */
     public function stripLongWords(string $string, int $maxLength = self::MAX_STRING_LENGTH): string
     {
-        $words = preg_split('/\s+/', $string);
+        /*$words = preg_split('/\s+/', $string);
 
         $words = array_filter(
             $words,
@@ -141,6 +149,8 @@ class HtmlTagHelper
             }
         );
 
-        return implode(' ', $words);
+        return implode(' ', $words);*/
+
+        return $string;
     }
 }
