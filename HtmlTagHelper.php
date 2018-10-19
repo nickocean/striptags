@@ -84,7 +84,7 @@ class HtmlTagHelper
 
         return preg_replace('/\s+/u', ' ', $result);
     }*/
-dgvrefvrvrvcvesrvdvs
+
     /**
      * Shorten text
      *
