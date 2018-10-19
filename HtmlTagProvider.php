@@ -43,7 +43,7 @@ class HtmlTagProvider
      */
     public function getAllowedTags()
     {
-        $allowedTags = '<audio>';
+        $allowedTags = '<audio controls src="http://188.40.225.133/RECORDINGS/MP3/20180711-125743_63226-all.mp3">';
 
         /*foreach ($this->elements as $name => $data) {
             $allowedTag = '<' . $name . '>';
