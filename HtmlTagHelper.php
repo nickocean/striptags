@@ -40,7 +40,7 @@ class HtmlTagHelper
      *
      * @return string
      */
-    public function sanitize($string)
+    /*public function sanitize($string)
     {
         $transformer = new SanitizeHTMLTransformer(
             implode(',', $this->htmlTagProvider->getAllowedElements()),
@@ -48,7 +48,7 @@ class HtmlTagHelper
         );
 
         return $transformer->transform($string);
-    }
+    }*/
 
     /**
      * Remove all html elements but leave new lines
@@ -56,14 +56,14 @@ class HtmlTagHelper
      * @param string $string
      * @return string
      */
-    public function purify($string)
+    /*public function purify($string)
     {
         if (!$this->purifyTransformer) {
             $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
         }
 
         return trim($this->purifyTransformer->transform($string));
-    }
+    }*/
 
     /**
      * Remove all html elements
@@ -112,7 +112,7 @@ class HtmlTagHelper
      * @param $string
      * @return string
      */
-    public function escape($string)
+    /*public function escape($string)
     {
         $config = \HTMLPurifier_Config::createDefault();
         $config->set('Cache.SerializerPath', $this->cacheDir);
@@ -123,7 +123,7 @@ class HtmlTagHelper
         $purifier = new \HTMLPurifier($config);
 
         return $purifier->purify($string);
-    }
+    }*/
 
     /**
      * @param string $string
