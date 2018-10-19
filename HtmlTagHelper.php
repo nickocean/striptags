@@ -72,13 +72,13 @@ class HtmlTagHelper
      * @param bool $uiAllowedTags
      * @return string
      */
-    public function stripTags($string, $uiAllowedTags = true)
+    public function stripTags($string)
     {
-        $string = str_replace('>', '> ', $string);
+        //$string = str_replace('>', '> ', $string);
 
-        if ($uiAllowedTags) {
-            return stripslashes(strip_tags($string, $this->htmlTagProvider->getAllowedTags()));
-        }
+
+            return strip_tags($string, $this->htmlTagProvider->getAllowedTags());
+
 
        /* $result = trim(strip_tags($string));
 
