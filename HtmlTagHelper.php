@@ -43,7 +43,7 @@ class HtmlTagHelper
     public function sanitize($string) {
 
 		    $transformer = new SanitizeHTMLTransformer(
-			    '<audio>',
+			    'audio',
 			    $this->cacheDir
 		    );
 
@@ -61,7 +61,7 @@ class HtmlTagHelper
     {
 
         if (!$this->purifyTransformer) {
-            $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
+            $this->purifyTransformer = new SanitizeHTMLTransformer('audio', $this->cacheDir);
         }
 
         return trim($this->purifyTransformer->transform($string));
@@ -116,7 +116,6 @@ class HtmlTagHelper
         $config->set('Cache.SerializerPermissions', 0775);
         $config->set('Attr.EnableID', true);
         $config->set('Core.EscapeInvalidTags', true);
-	    $config->set('HTML.Allowed', 'audio');
 
 	    /*$config->set('HTML.DefinitionID', 'enduser-customize.html tutorial');
 	    $config->set('HTML.DefinitionRev', 1);
