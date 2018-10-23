@@ -41,9 +41,9 @@ class HtmlTagHelper
      * @return string
      */
     public function sanitize($string) {
-    	
+
 		    $transformer = new SanitizeHTMLTransformer(
-			    'audio',
+			    '<audio controls src="">',
 			    $this->cacheDir
 		    );
 
@@ -116,7 +116,7 @@ class HtmlTagHelper
         $config->set('Cache.SerializerPermissions', 0775);
         $config->set('Attr.EnableID', true);
         $config->set('Core.EscapeInvalidTags', true);
-	    $config->set('HTML.DefinitionID', 'enduser-customize.html tutorial');
+	    /*$config->set('HTML.DefinitionID', 'enduser-customize.html tutorial');
 	    $config->set('HTML.DefinitionRev', 1);
 	    $def = $config->getHTMLDefinition(true);
 	    $audio = $def->addElement(
@@ -128,7 +128,7 @@ class HtmlTagHelper
 			    'src' => 'URI'
 		    )
 	    );
-	    $audio->excludes = array('audio' => true);
+	    $audio->excludes = array('audio' => true);*/
 
         $purifier = new \HTMLPurifier($config);
 
