@@ -43,7 +43,7 @@ class HtmlTagHelper
     public function sanitize($string)
     {
 		    $transformer = new SanitizeHTMLTransformer(
-			    '<audio>',
+			    'audio',
 			    $this->cacheDir
 		    );
 
