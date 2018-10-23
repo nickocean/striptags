@@ -66,17 +66,6 @@ class SanitizeHTMLTransformer implements DataTransformerInterface
         if (!$this->htmlPurifier) {
             $config = \HTMLPurifier_Config::createDefault();
 
-	        $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
-	        $config->set('HTML.SafeIframe', true);
-
-	        $config->set('HTML.DefinitionID', 'html5-definitions');
-	        $config->set('HTML.DefinitionRev', 1);
-	        if ($def = $config->maybeGetRawHTMLDefinition()) {
-		        $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
-			        'src'      => 'URI',
-			        'controls' => 'Bool'
-		        ));
-
             $this->fillAllowedElementsConfig($config);
             $this->fillCacheConfig($config);
             // add inline data support
@@ -89,7 +78,7 @@ class SanitizeHTMLTransformer implements DataTransformerInterface
         }
 
         return $this->htmlPurifier->purify($value);
-    }}
+    }
 
     /**
      * Create cache dir if need
