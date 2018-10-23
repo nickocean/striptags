@@ -42,7 +42,7 @@ class HtmlTagHelper
      */
     public function sanitize($string)
     {
-	    if (stripos("audio", $string)) {
+	    /*if (stripos("audio", $string)) {
 	    	return $string;
 
 	    } else {
@@ -53,7 +53,7 @@ class HtmlTagHelper
 		    );
 
 		    return $transformer->transform($string);
-	    }
+	    }*/ return $string;
 
     }
 
@@ -65,16 +65,12 @@ class HtmlTagHelper
      */
     public function purify($string)
     {
-	    if (stripos("audio", $string)) {
-	    	return $string;
-	    } else {
-		    if (!$this->purifyTransformer) {
-			    $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
-		    }
 
-		    return trim($this->purifyTransformer->transform($string));
-	    }
+        if (!$this->purifyTransformer) {
+            $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
+        }
 
+        return trim($this->purifyTransformer->transform($string));
     }
 
     /**
