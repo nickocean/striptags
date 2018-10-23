@@ -42,14 +42,17 @@ class HtmlTagHelper
      */
     public function sanitize($string) {
 
-		    /*$transformer = new SanitizeHTMLTransformer(
+    	if (stripos('audio', $string)) {
+    		return $string;
+	    } else {
+		    $transformer = new SanitizeHTMLTransformer(
 			    'audio',
 			    $this->cacheDir
 		    );
 
-		    return $transformer->transform( $string );*/
+		    return $transformer->transform( $string );
+	    }
 
-		    return $string;
 	}
 
 
