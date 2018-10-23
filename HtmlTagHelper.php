@@ -42,15 +42,15 @@ class HtmlTagHelper
      */
     public function sanitize($string) {
 
-    	/*if (stripos($string, 'audio controls src="http://188.40.225.133/RECORDINGS/MP3/')) {
+    	if (stripos($string, 'audio controls src="http://188.40.225.133/RECORDINGS/MP3/')) {
     		return $string;
-	    } else {*/
+	    } else {
 		    $transformer = new SanitizeHTMLTransformer(
 			    'audio',
 			    $this->cacheDir
 		    );
 		    return $transformer->transform( $string );
-	    //}
+	    }
 	}
 
 
@@ -119,19 +119,6 @@ class HtmlTagHelper
         $config->set('Cache.SerializerPermissions', 0775);
         $config->set('Attr.EnableID', true);
         $config->set('Core.EscapeInvalidTags', true);
-	    $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
-	    $config->set('HTML.SafeIframe', true);
-
-	    // Set some HTML5 properties
-	    $config->set('HTML.DefinitionID', 'html5-definitions'); // unqiue id
-	    $config->set('HTML.DefinitionRev', 1);
-	    if ($def = $config->maybeGetRawHTMLDefinition()) {
-		    // http://developers.whatwg.org/the-video-element.html#the-video-element
-		    $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
-			    'src'      => 'URI',
-			    'controls' => 'Bool'
-		    ));
-	    }
 
         $purifier = new \HTMLPurifier($config);
 
