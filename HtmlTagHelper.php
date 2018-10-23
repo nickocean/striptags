@@ -48,7 +48,6 @@ class HtmlTagHelper
 		    );
 
 		    return $transformer->transform($string);
-
     }
 
     /**
@@ -112,10 +111,16 @@ class HtmlTagHelper
     public function escape($string)
     {
         $config = \HTMLPurifier_Config::createDefault();
+	    $config->set('HTML.DefinitionID', 'html5-definitions'); // unqiue id
+	    $config->set('HTML.DefinitionRev', 1);
         $config->set('Cache.SerializerPath', $this->cacheDir);
         $config->set('Cache.SerializerPermissions', 0775);
         $config->set('Attr.EnableID', true);
         $config->set('Core.EscapeInvalidTags', true);
+
+	    if ($def = $config->maybeGetRawHTMLDefinition()) {
+	    	$def->addElement('audio', 'Block');
+	    }
 
         $purifier = new \HTMLPurifier($config);
 
