@@ -120,20 +120,6 @@ class HtmlTagHelper
         $config->set('Attr.EnableID', true);
         $config->set('Core.EscapeInvalidTags', true);
 
-	    /*$config->set('HTML.DefinitionID', 'enduser-customize.html tutorial');
-	    $config->set('HTML.DefinitionRev', 1);
-	    $def = $config->getHTMLDefinition(true);
-	    $audio = $def->addElement(
-		    'audio',   // name
-		    'Block',  // content set
-		    'Flow', // allowed children
-		    'Common', // attribute collection
-		    array( // attributes
-			    'src' => 'URI'
-		    )
-	    );
-	    $audio->excludes = array('audio' => true);*/
-
         $purifier = new \HTMLPurifier($config);
 
         return $purifier->purify($string);

@@ -66,6 +66,19 @@ class SanitizeHTMLTransformer implements DataTransformerInterface
         if (!$this->htmlPurifier) {
             $config = \HTMLPurifier_Config::createDefault();
 
+	        $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
+	        $config->set('HTML.SafeIframe', true);
+
+	        // Set some HTML5 properties
+	        $config->set('HTML.DefinitionID', 'html5-definitions'); // unqiue id
+	        $config->set('HTML.DefinitionRev', 1);
+	        if ($def = $config->maybeGetRawHTMLDefinition()) {
+		        // http://developers.whatwg.org/the-video-element.html#the-video-element
+		        $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
+			        'src'      => 'URI',
+			        'controls' => 'Bool'
+		        ));
+	        }
             $this->fillAllowedElementsConfig($config);
             $this->fillCacheConfig($config);
             // add inline data support
