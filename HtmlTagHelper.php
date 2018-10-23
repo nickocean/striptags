@@ -42,14 +42,12 @@ class HtmlTagHelper
      */
     public function sanitize($string)
     {
-        /*$transformer = new SanitizeHTMLTransformer(
+        $transformer = new SanitizeHTMLTransformer(
             implode(',', $this->htmlTagProvider->getAllowedElements()),
             $this->cacheDir
         );
 
-        return $transformer->transform($string);*/
-
-        return $string;
+        return $transformer->transform($string);
     }
 
     /**
