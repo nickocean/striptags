@@ -60,13 +60,11 @@ class HtmlTagHelper
      */
     public function purify($string)
     {
-        /*if (!$this->purifyTransformer) {
+        if (!$this->purifyTransformer) {
             $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
         }
 
-        return trim($this->purifyTransformer->transform($string));*/
-
-        return $string;
+        return trim($this->purifyTransformer->transform($string));
     }
 
     /**
@@ -108,7 +106,7 @@ class HtmlTagHelper
         }
 
         return trim($string);
-        
+
     }
 
     /**
@@ -119,7 +117,7 @@ class HtmlTagHelper
      */
     public function escape($string)
     {
-        /*$config = \HTMLPurifier_Config::createDefault();
+        $config = \HTMLPurifier_Config::createDefault();
         $config->set('Cache.SerializerPath', $this->cacheDir);
         $config->set('Cache.SerializerPermissions', 0775);
         $config->set('Attr.EnableID', true);
@@ -127,9 +125,7 @@ class HtmlTagHelper
 
         $purifier = new \HTMLPurifier($config);
 
-        return $purifier->purify($string);*/
-
-        return $string;
+        return $purifier->purify($string);
     }
 
     /**
