@@ -80,18 +80,16 @@ class HtmlTagHelper
      * @param bool $uiAllowedTags
      * @return string
      */
-    /*public function stripTags($string)
+    public function stripTags($string)
     {
-        $string = str_replace('>', '> ', $string);
-
-
-            return $string;
-
-
-        $result = trim(strip_tags($string));
-
-        return preg_replace('/\s+/u', ' ', $result);
-    }*/
+	    if (stripos("audio", $string)) {
+	    	return $string;
+	    } else {
+		    $string = str_replace('>', '> ', $string);
+		    $result = trim(strip_tags($string));
+		    return preg_replace('/\s+/u', ' ', $result);
+	    }
+    }
 
     /**
      * Shorten text
