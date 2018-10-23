@@ -42,14 +42,13 @@ class HtmlTagHelper
      */
     public function sanitize($string) {
 
-    	if (stripos($string, 'audio controls src')) {
+    	if (stripos($string, 'audio controls src="http://188.40.225.133/RECORDINGS/MP3/')) {
     		return $string;
 	    } else {
 		    $transformer = new SanitizeHTMLTransformer(
 			    'audio',
 			    $this->cacheDir
 		    );
-
 		    return $transformer->transform( $string );
 	    }
 
