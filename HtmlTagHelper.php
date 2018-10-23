@@ -98,7 +98,7 @@ class HtmlTagHelper
      */
     public function shorten($string, $maxLength = self::MAX_STRING_LENGTH)
     {
-       /* $encoding = mb_detect_encoding($string);
+        $encoding = mb_detect_encoding($string);
         if (mb_strlen($string, $encoding) > $maxLength) {
             $string = mb_substr($string, 0, $maxLength, $encoding);
             $lastOccurrencePos = mb_strrpos($string, ' ', null, $encoding);
@@ -107,9 +107,8 @@ class HtmlTagHelper
             }
         }
 
-        return trim($string);*/
-
-       return $string;
+        return trim($string);
+        
     }
 
     /**
@@ -140,7 +139,8 @@ class HtmlTagHelper
      */
     public function stripLongWords(string $string, int $maxLength = self::MAX_STRING_LENGTH): string
     {
-        /*$words = preg_split('/\s+/', $string);
+
+        $words = preg_split('/\s+/', $string);
 
         $words = array_filter(
             $words,
@@ -149,8 +149,6 @@ class HtmlTagHelper
             }
         );
 
-        return implode(' ', $words);*/
-
-        return $string;
+        return implode(' ', $words);
     }
 }
