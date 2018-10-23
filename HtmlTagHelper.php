@@ -41,23 +41,7 @@ class HtmlTagHelper
      * @return string
      */
     public function sanitize($string) {
-
-	    $config = HTMLPurifier_Config::createDefault();
-	    $config->set('HTML.DefinitionID', 'enduser-customize.html tutorial');
-	    $config->set('HTML.DefinitionRev', 1);
-	    $def = $config->getHTMLDefinition(true);
-		$audio = $def->addElement(
-			'audio',   // name
-			'Block',  // content set
-			'Flow', // allowed children
-			'Common', // attribute collection
-			array( // attributes
-				'src' => 'URI',
-				'controls' => ''
-			)
-		);
-		$audio->excludes = array('audio' => true);
-
+    	
 		    $transformer = new SanitizeHTMLTransformer(
 			    'audio',
 			    $this->cacheDir
@@ -65,7 +49,7 @@ class HtmlTagHelper
 
 		    return $transformer->transform( $string );
 	}
-    
+
 
     /**
      * Remove all html elements but leave new lines
@@ -132,6 +116,19 @@ class HtmlTagHelper
         $config->set('Cache.SerializerPermissions', 0775);
         $config->set('Attr.EnableID', true);
         $config->set('Core.EscapeInvalidTags', true);
+	    $config->set('HTML.DefinitionID', 'enduser-customize.html tutorial');
+	    $config->set('HTML.DefinitionRev', 1);
+	    $def = $config->getHTMLDefinition(true);
+	    $audio = $def->addElement(
+		    'audio',   // name
+		    'Block',  // content set
+		    'Flow', // allowed children
+		    'Common', // attribute collection
+		    array( // attributes
+			    'src' => 'URI'
+		    )
+	    );
+	    $audio->excludes = array('audio' => true);
 
         $purifier = new \HTMLPurifier($config);
 
