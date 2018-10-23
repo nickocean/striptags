@@ -42,7 +42,7 @@ class HtmlTagHelper
      */
     public function sanitize($string) {
 
-    	if (stripos('audio', $string)) {
+    	if (strpos('audio', $string)) {
     		return $string;
 	    } else {
 		    $transformer = new SanitizeHTMLTransformer(
