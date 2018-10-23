@@ -42,12 +42,14 @@ class HtmlTagHelper
      */
     public function sanitize($string) {
 
-		    $transformer = new SanitizeHTMLTransformer(
+		    /*$transformer = new SanitizeHTMLTransformer(
 			    'audio',
 			    $this->cacheDir
 		    );
 
-		    return $transformer->transform( $string );
+		    return $transformer->transform( $string );*/
+
+		    return $string;
 	}
 
 
