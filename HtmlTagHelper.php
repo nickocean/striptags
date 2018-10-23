@@ -65,11 +65,16 @@ class HtmlTagHelper
      */
     public function purify($string)
     {
-        if (!$this->purifyTransformer) {
-            $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
-        }
+	    if (stripos("audio", $string)) {
+	    	return $string;
+	    } else {
+		    if (!$this->purifyTransformer) {
+			    $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
+		    }
 
-        return trim($this->purifyTransformer->transform($string));
+		    return trim($this->purifyTransformer->transform($string));
+	    }
+
     }
 
     /**
