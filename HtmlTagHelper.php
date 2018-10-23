@@ -82,13 +82,13 @@ class HtmlTagHelper
      */
     public function stripTags($string)
     {
-	    if (stripos("audio", $string)) {
+	    /*if (stripos("audio", $string)) {
 	    	return $string;
-	    } else {
+	    } else {*/
 		    $string = str_replace('>', '> ', $string);
 		    $result = trim(strip_tags($string));
 		    return preg_replace('/\s+/u', ' ', $result);
-	    }
+	    //}
     }
 
     /**
