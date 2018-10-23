@@ -119,7 +119,7 @@ class HtmlTagHelper
         $config->set('Core.EscapeInvalidTags', true);
 
 	    if ($def = $config->maybeGetRawHTMLDefinition()) {
-	    	$def->addElement('audio', 'Block');
+	    	$def->addElement('audio', 'Block', 'Optional: (src, Flow) | (Flow, src) | Flow', 'Common');
 	    }
 
         $purifier = new \HTMLPurifier($config);
