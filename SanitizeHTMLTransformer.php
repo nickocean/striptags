@@ -74,6 +74,14 @@ class SanitizeHTMLTransformer implements DataTransformerInterface
                 ['http' => true, 'https' => true, 'mailto' => true, 'ftp' => true, 'data' => true, 'tel' => true]
             );
             $config->set('Attr.AllowedFrameTargets', ['_blank']);
+	        $config->set('HTML.DefinitionID', 'html5-definitions111'); // unqiue id
+	        $config->set('HTML.DefinitionRev', 1);
+	        if ($def = $config->maybeGetRawHTMLDefinition()) {
+	        	$def->addElement('audio', 'Block', 'Flow', 'Common', [
+	        		'controls' => 'Bool',
+			        'src' => 'URI'
+		        ]);
+	        }
             $this->htmlPurifier = new \HTMLPurifier($config);
         }
 
