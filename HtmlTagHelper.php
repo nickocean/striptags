@@ -46,7 +46,7 @@ class HtmlTagHelper
     		return $string;
 	    } else {*/
 		    $transformer = new SanitizeHTMLTransformer(
-			    $string,
+			    'audio',
 			    $this->cacheDir
 		    );
 		    return $transformer->transform( $string );
@@ -64,7 +64,7 @@ class HtmlTagHelper
     {
 
         if (!$this->purifyTransformer) {
-            $this->purifyTransformer = new SanitizeHTMLTransformer($string, $this->cacheDir);
+            $this->purifyTransformer = new SanitizeHTMLTransformer('audio', $this->cacheDir);
         }
 
         return trim($this->purifyTransformer->transform($string));
