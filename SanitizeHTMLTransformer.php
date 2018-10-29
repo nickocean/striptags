@@ -66,7 +66,7 @@ class SanitizeHTMLTransformer implements DataTransformerInterface
         if (!$this->htmlPurifier) {
             $config = \HTMLPurifier_Config::createDefault();
 
-            $this->fillAllowedElementsConfig($config);
+            //$this->fillAllowedElementsConfig($config);
             $this->fillCacheConfig($config);
             // add inline data support
             $config->set(
