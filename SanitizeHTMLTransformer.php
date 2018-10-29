@@ -74,6 +74,7 @@ class SanitizeHTMLTransformer implements DataTransformerInterface
                 ['http' => true, 'https' => true, 'mailto' => true, 'ftp' => true, 'data' => true, 'tel' => true]
             );
             $config->set('Attr.AllowedFrameTargets', ['_blank']);
+            // add audio tag
 	        $config->set('HTML.DefinitionID', 'html5-definitions111'); // unqiue id
 	        $config->set('HTML.DefinitionRev', 1);
 	        if ($def = $config->maybeGetRawHTMLDefinition()) {
