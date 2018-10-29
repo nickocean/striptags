@@ -46,7 +46,7 @@ class HtmlTagHelper
     		return $string;
 	    } else {*/
 		    $transformer = new SanitizeHTMLTransformer(
-			    'audio',
+			    $string,
 			    $this->cacheDir
 		    );
 		    return $transformer->transform( $string );
@@ -64,7 +64,7 @@ class HtmlTagHelper
     {
 
         if (!$this->purifyTransformer) {
-            $this->purifyTransformer = new SanitizeHTMLTransformer(null, $this->cacheDir);
+            $this->purifyTransformer = new SanitizeHTMLTransformer($string, $this->cacheDir);
         }
 
         return trim($this->purifyTransformer->transform($string));
@@ -77,12 +77,12 @@ class HtmlTagHelper
      * @param bool $uiAllowedTags
      * @return string
      */
-    public function stripTags($string)
+    /*public function stripTags($string)
     {
 		$string = str_replace('>', '> ', $string);
 		$result = trim(strip_tags($string));
 		return preg_replace('/\s+/u', ' ', $result);
-    }
+    }*/
 
     /**
      * Shorten text
